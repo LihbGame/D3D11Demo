@@ -73,8 +73,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\360安全浏览器下载\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\Tools\DirectX11\Common_VS2015;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\360安全浏览器下载\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\Tools\DirectX11\Effects11\Win32_Debug_Static_MTd;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\360安全浏览器下载\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\BlendDemo\FX;D:\360安全浏览器下载\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\Tools\DirectX11\Common_VS2015;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\360安全浏览器下载\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\静态编译的DirectX11项目BlendDemo工程文件以及相关资料\Tools\DirectX11\Effects11\Win32_Debug_Static_MTd;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -167,7 +167,11 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\%(Filename).fxo</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)\%(Filename).fxo</Outputs>
     </CustomBuild>
-    <None Include="FX\LightHelper.fx" />
+    <CustomBuild Include="FX\LightHelper.fx">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /Fc /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\%(Filename).fxo" "%(FullPath)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\%(Filename).fxo</Outputs>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Tools\DirectX11\Common_VS2015\Camera.cpp" />
